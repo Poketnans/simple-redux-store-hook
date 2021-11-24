@@ -1,0 +1,15 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+}
+
+code {
+  background: #3c3933;
+  color: rgb(192, 194, 97);
+  padding: 10px;
+  text-align: initial;
+}
