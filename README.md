@@ -70,7 +70,7 @@ The main principle is use custome hooks for store and modules.
 
 On the modules to center dispatch and thunks using on the same\
 place and construct functions that mirrors `actions` names to\
-finaly return them on a object:
+finaly return them in an object:
 
 ### _hook.js_
 
