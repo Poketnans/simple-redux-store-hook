@@ -1,23 +1,15 @@
 import { useDispatch } from "react-redux";
 import { addNameThunk, removeNameThunk } from "./thunks";
 
-const useAddName = () => {
+export const useNamesActions = () => {
   const dispatch = useDispatch();
 
   const addName = (newName) => dispatch(addNameThunk(newName));
 
-  return { addName };
-};
-
-const useRemoveName = () => {
-  const dispatch = useDispatch();
-
   const removeName = (name) => dispatch(removeNameThunk(name));
 
-  return { removeName };
+  return {
+    addName,
+    removeName
+  };
 };
-
-export const useNamesActions = () => ({
-  ...useAddName(),
-  ...useRemoveName()
-});
