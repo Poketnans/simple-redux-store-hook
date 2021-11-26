@@ -117,7 +117,7 @@ export const useStore = () => ({
 
 In this case, the store object is some like this:
 
-```json
+```js
 { names, addName, removeName }
 ```
 
