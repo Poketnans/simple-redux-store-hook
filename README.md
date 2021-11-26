@@ -70,7 +70,7 @@ On the modules to center dispatch and thunks using on the same\
 place and construct functions that mirrors `actions` names to\
 finaly return them on a object:
 
-### _hooks.js_
+### _hook.js_
 
 ```js
 import { useDispatch } from "react-redux";
@@ -90,7 +90,7 @@ export const useNamesActions = () => {
 };
 ```
 
-And on the store to sprad this module hooks's and useSelector's return\
+And on the store to sprad the useSelector's and module hooks's return\
 to construct an object that contains both states and action functions to\
 be catch on the components.
 
@@ -115,7 +115,7 @@ export const useStore = () => ({
 });
 ```
 
-In this case, the store object is some like this:
+In this case, the store object is something like this:
 
 ```js
 { names, addName, removeName }
