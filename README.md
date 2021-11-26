@@ -64,7 +64,7 @@ import {useStore} from "./store";
         - thunks.js
     - index.js
 
-### Logical
+### Logic
 
 The main principle is use custome hooks for store and modules.
 
