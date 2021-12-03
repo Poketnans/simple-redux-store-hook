@@ -1,7 +1,7 @@
 # Simple Store Hook - Redux
 
-Using a simple hook on the store index file,
-it's possible to avoid verbose code on the components.
+Using a simple hook on the store index file and modules,\
+it's possible to avoid verbose code on the components.\
 This aproach seems like React's Context API on the component side.
 
 The following exemple shows the general state capturing:
@@ -9,7 +9,9 @@ The following exemple shows the general state capturing:
 ```js
 import { useSelector } from "react-redux";
 
-const names = useSelector((store) => store.names);
+{...}
+  const names = useSelector((store) => store.names);
+{...}
 ```
 
 The logical sequence above will not be necessary in every\
@@ -19,7 +21,7 @@ components anymore, just using:
 import useStore from "./store"
 
 {...}
-const {names} = useStore()
+  const {names} = useStore()
 {...}
 ```
 
@@ -31,9 +33,9 @@ import { addNameThunk } from "./store/names/thunks";
 import { useDispatch } from "react-redux";
 
 {...}
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-const handleClick = () => dispatch(addNameThunk(newName));
+  const handleClick = () => dispatch(addNameThunk(newName));
 {...}
 ```
 
@@ -43,9 +45,9 @@ Just like:
 import {useStore} from "./store";
 
 {...}
-const {addName} = useStore();
+  const {addName} = useStore();
 
-const handleClick = () => addName(newName);
+  const handleClick = () => addName(newName);
 {...}
 ```
 
@@ -62,15 +64,15 @@ const handleClick = () => addName(newName);
         - thunks.js
     - index.js
 
-### Logical
+### Logic
 
 The main principle is use custome hooks for store and modules.
 
 On the modules to center dispatch and thunks using on the same\
 place and construct functions that mirrors `actions` names to\
-finaly return them on a object:
+finaly return them in an object:
 
-### _hooks.js_
+### _hook.js_
 
 ```js
 import { useDispatch } from "react-redux";
@@ -90,7 +92,7 @@ export const useNamesActions = () => {
 };
 ```
 
-And on the store to sprad this module hooks's and useSelector's return\
+And on the store to sprad the useSelector's and module hooks's return\
 to construct an object that contains both states and action functions to\
 be catch on the components.
 
@@ -115,7 +117,7 @@ export const useStore = () => ({
 });
 ```
 
-In this case, the store object is some like this:
+In this case, the store object is something like this:
 
 ```js
 {
