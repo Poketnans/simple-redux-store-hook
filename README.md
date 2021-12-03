@@ -120,7 +120,9 @@ export const useStore = () => ({
 In this case, the store object is something like this:
 
 ```js
-{ names, addName, removeName }
+{
+  names, addName, removeName;
+}
 ```
 
 Being able to be captured by destructuring.
