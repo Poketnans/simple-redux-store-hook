@@ -1,7 +1,7 @@
 {
   "name": "simple-store-hook-redux",
   "version": "1.0.0",
-  "description": "Implements custom hooks to turn redux using similar to Context API",
+  "description": "",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
