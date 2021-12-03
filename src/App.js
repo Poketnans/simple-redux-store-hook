@@ -56,10 +56,12 @@ export default function App() {
         <br />
         const handleClick = () =&gt; dispatch(addNameThunk(newName));
       </Code>
+
       <VStack>
         <Input placeholder="New name" onChange={handleChange} />
         <Button onClick={handleAdd}> Add </Button>
       </VStack>
+
       <List spacing={4}>
         {names.map((name, index) => (
           <ListItem
