@@ -7,7 +7,10 @@ import {
   ListIcon,
   Input,
   Button,
-  VStack
+  VStack,
+  Heading,
+  Text,
+  Code
 } from "@chakra-ui/react";
 import { CheckCircleIcon, DeleteIcon } from "@chakra-ui/icons";
 
@@ -23,22 +26,25 @@ export default function App() {
 
   return (
     <VStack className="App">
-      <h1>Simple Store Hook - Redux</h1>
+      <Heading as="h1">Simple Store Hook - Redux</Heading>
 
-      <p>
+      <Text>
         Using a simple hook on the store index file,
         <br />
         it's possible to avoid verbose code on the components
         <br />
         like in the line beneath.
-      </p>
-      <code> const names = useSelector((store) =&gt; store.names) </code>
-      <p>
+      </Text>
+      <Code p="3" borderRadius="8px" colorScheme="">
+        {" "}
+        const names = useSelector((store) =&gt; store.names){" "}
+      </Code>
+      <Text>
         Also, it's possible to avoid the dispatch/thunk call
         <br />
         on the component like in the line beneath.
-      </p>
-      <code>
+      </Text>
+      <Code p="3" borderRadius="8px" colorScheme="">
         import &#123; addNameThunk &#125; from "./store/names/thunks";
         <br />
         <br />
@@ -49,9 +55,11 @@ export default function App() {
         <br />
         <br />
         const handleClick = () =&gt; dispatch(addNameThunk(newName));
-      </code>
-      <Input placeholder="New name" onChange={handleChange} />
-      <Button onClick={handleAdd}> Add </Button>
+      </Code>
+      <VStack>
+        <Input placeholder="New name" onChange={handleChange} />
+        <Button onClick={handleAdd}> Add </Button>
+      </VStack>
       <List spacing={4}>
         {names.map((name, index) => (
           <ListItem
