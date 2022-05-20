@@ -8,6 +8,7 @@ import {
   Input,
   Button,
   VStack,
+  HStack,
   Heading,
   Text,
   Code
@@ -16,13 +17,27 @@ import { CheckCircleIcon, DeleteIcon } from "@chakra-ui/icons";
 
 export default function App() {
   const [name, setName] = useState();
-  const { names, removeName, addName } = useStore(); // simple store use
+  const [product, setProduct] = useState();
+  const {
+    names,
+    removeName,
+    addName,
+    addProduct,
+    products,
+    removeProduct
+  } = useStore(); // simple store use
 
   const handleChange = ({ target }) => setName(target.value);
 
+  const handleChangeProduct = ({ target }) => setProduct(target.value);
+
   const handleAdd = () => addName(name);
 
+  const handleAddProduct = () => addProduct(product);
+
   const handleDelete = (name) => removeName(name);
+
+  const handleDeleteProduct = (product) => removeProduct(product);
 
   return (
     <VStack className="App">
@@ -57,30 +72,65 @@ export default function App() {
         const handleClick = () =&gt; dispatch(addNameThunk(newName));
       </Code>
 
-      <VStack>
-        <Input placeholder="New name" onChange={handleChange} />
-        <Button onClick={handleAdd}> Add </Button>
-      </VStack>
+      <HStack alignItems="start">
+        <VStack>
+          <VStack>
+            <Input placeholder="New name" onChange={handleChange} />
+            <Button bg="#88fd" onClick={handleAdd}>
+              {" "}
+              Add{" "}
+            </Button>
+          </VStack>
+          <List spacing={4}>
+            {names.map((name, index) => (
+              <ListItem
+                key={index}
+                w="150px"
+                display="flex"
+                justifyContent="space-between"
+              >
+                <ListIcon as={CheckCircleIcon} mr={5} color="green.200" />
+                {name}
+                <ListIcon
+                  as={DeleteIcon}
+                  cursor="pointer"
+                  color="red"
+                  onClick={() => handleDelete(name)}
+                />
+              </ListItem>
+            ))}
+          </List>
+        </VStack>
+        <VStack>
+          <VStack>
+            <Input placeholder="New product" onChange={handleChangeProduct} />
+            <Button bg="#eeaa54" onClick={handleAddProduct}>
+              {" "}
+              Add{" "}
+            </Button>
+          </VStack>
 
-      <List spacing={4}>
-        {names.map((name, index) => (
-          <ListItem
-            key={index}
-            w="150px"
-            display="flex"
-            justifyContent="space-between"
-          >
-            <ListIcon as={CheckCircleIcon} mr={5} color="green.200" />
-            {name}
-            <ListIcon
-              as={DeleteIcon}
-              cursor="pointer"
-              color="red"
-              onClick={() => handleDelete(name)}
-            />
-          </ListItem>
-        ))}
-      </List>
+          <List spacing={4}>
+            {products.map((product, index) => (
+              <ListItem
+                key={index}
+                w="150px"
+                display="flex"
+                justifyContent="space-between"
+              >
+                <ListIcon as={CheckCircleIcon} mr={5} color="green.200" />
+                {product}
+                <ListIcon
+                  as={DeleteIcon}
+                  cursor="pointer"
+                  color="red"
+                  onClick={() => handleDeleteProduct(product)}
+                />
+              </ListItem>
+            ))}
+          </List>
+        </VStack>
+      </HStack>
     </VStack>
   );
 }

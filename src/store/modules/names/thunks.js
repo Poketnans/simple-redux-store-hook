@@ -1,4 +1,4 @@
-import { addName, removeName } from "./actions";
+import { addName, removeName, resetNames } from "./actions";
 
 export const addNameThunk = (newName) => {
   return (dispatch, getStore) => {
@@ -19,5 +19,13 @@ export const removeNameThunk = (removingName) => {
     const updatedNamesList = names.filter((name) => name !== removingName);
 
     dispatch(removeName(updatedNamesList));
+  };
+};
+
+export const resetNamesThunk = () => {
+  return (dispatch, getStore) => {
+    const updatedNamesList = [];
+
+    dispatch(resetNames(updatedNamesList));
   };
 };
