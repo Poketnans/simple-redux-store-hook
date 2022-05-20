@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { addNameThunk, removeNameThunk } from "./thunks";
+import { addNameThunk, removeNameThunk, resetNamesThunk } from "./thunks";
 
 export const useNamesActions = () => {
   const dispatch = useDispatch();
@@ -8,8 +8,11 @@ export const useNamesActions = () => {
 
   const removeName = (name) => dispatch(removeNameThunk(name));
 
+  const resetNames = (name) => dispatch(resetNamesThunk());
+
   return {
     addName,
-    removeName
+    removeName,
+    resetNames
   };
 };
